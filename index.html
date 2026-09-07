@@ -1,2080 +1,1267 @@
-<<<<<<< Updated upstream
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portafolio — Fotografía</title>
-  <style>
-/* ================================
+<<<<<<< Updated upstream <!DOCTYPE html>
+  <html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio — Fotografía</title>
+    <style>
+      /* ================================
    FOTOGRAFÍA — style.css
    Dark minimal, image-first
    ================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400&display=swap');
 
-/* ── TOKENS ─────────────────────── */
-:root {
-  --bg:       #0a0a0a;
-  --surface:  #111111;
-  --border:   rgba(255,255,255,0.07);
-  --white:    #f0ede8;
-  --dim:      rgba(240,237,232,0.4);
-  --accent:   #c8a97e;
-  --gap:      clamp(1.5rem, 3vw, 3rem);
-}
+      /* ── TOKENS ─────────────────────── */
+      :root {
+        --bg: #0a0a0a;
+        --surface: #111111;
+        --border: rgba(255, 255, 255, 0.07);
+        --white: #f0ede8;
+        --dim: rgba(240, 237, 232, 0.4);
+        --accent: #c8a97e;
+        --gap: clamp(1.5rem, 3vw, 3rem);
+      }
 
-/* ── RESET ──────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+      /* ── RESET ──────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+      html {
+        scroll-behavior: smooth;
+      }
 
-img { display: block; width: 100%; }
-a   { color: inherit; text-decoration: none; }
+      body {
+        background: var(--bg);
+        color: var(--white);
+        font-family: 'Outfit', sans-serif;
+        font-weight: 300;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-/* ── CURSOR ─────────────────────── */
-body { cursor: none; }
+      img {
+        display: block;
+        width: 100%;
+      }
 
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  transition: opacity .3s;
-}
-.cursor-dot  { width: 5px; height: 5px; background: var(--accent); }
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(200,169,126,.5);
-  transition: width .35s ease, height .35s ease, border-color .35s ease;
-}
-.cursor-ring.hover {
-  width: 60px; height: 60px;
-  border-color: var(--accent);
-}
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-/* ── NAV ────────────────────────── */
-nav {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 200;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.8rem var(--gap);
-  background: linear-gradient(to bottom, rgba(10,10,10,.95) 0%, transparent 100%);
-}
+      /* ── CURSOR ─────────────────────── */
+      body {
+        cursor: none;
+      }
 
-.nav-logo {
-  font-family: 'Cormorant', serif;
-  font-size: 1.15rem;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white);
-}
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        transition: opacity .3s;
+      }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-}
-.nav-links a {
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: color .3s;
-}
-.nav-links a:hover { color: var(--white); }
+      .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background: var(--accent);
+      }
 
-.nav-cta {
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: .55rem 1.4rem;
-  border: 1px solid var(--border);
-  color: var(--dim);
-  transition: border-color .3s, color .3s;
-}
-.nav-cta:hover { border-color: var(--accent); color: var(--accent); }
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(200, 169, 126, .5);
+        transition: width .35s ease, height .35s ease, border-color .35s ease;
+      }
 
-/* ── HERO ───────────────────────── */
-.hero {
-  height: 100svh;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
+      .cursor-ring.hover {
+        width: 60px;
+        height: 60px;
+        border-color: var(--accent);
+      }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: #1a1612;   /* swap for your hero img */
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.05);
-  animation: heroZoom 8s ease forwards;
-}
-/* If using a real image: */
-/* .hero-bg { background-image: url('hero.jpg'); } */
+      /* ── NAV ────────────────────────── */
+      nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 200;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.8rem var(--gap);
+        background: linear-gradient(to bottom, rgba(10, 10, 10, .95) 0%, transparent 100%);
+      }
 
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10,10,10,1) 0%,
-    rgba(10,10,10,.5) 40%,
-    transparent 70%
-  );
-}
+      .nav-logo {
+        font-family: 'Cormorant', serif;
+        font-size: 1.15rem;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--white);
+      }
 
-/* placeholder text on hero-bg */
-.hero-bg-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-bg-label span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  color: rgba(240,237,232,.18);
-  letter-spacing: 0.15em;
-}
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2.5rem;
+      }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 var(--gap) clamp(3rem, 6vh, 5rem);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
+      .nav-links a {
+        font-size: 0.7rem;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        transition: color .3s;
+      }
 
-.hero-title {
-  font-family: 'Cormorant', serif;
-  font-weight: 300;
-  font-size: clamp(3.5rem, 8vw, 9rem);
-  line-height: .95;
-  letter-spacing: -0.01em;
-  opacity: 0;
-  animation: fadeUp .9s ease .4s forwards;
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
+      .nav-links a:hover {
+        color: var(--white);
+      }
 
-.hero-meta {
-  text-align: right;
-  opacity: 0;
-  animation: fadeUp .9s ease .7s forwards;
-}
-.hero-meta p {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  line-height: 2;
-}
-.hero-meta .scroll-cue {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: .7rem;
-  color: var(--dim);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.scroll-bar {
-  width: 32px;
-  height: 1px;
-  background: var(--dim);
-  animation: scrollPulse 2.5s ease-in-out 1.5s infinite;
-}
+      .nav-cta {
+        font-size: 0.7rem;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: .55rem 1.4rem;
+        border: 1px solid var(--border);
+        color: var(--dim);
+        transition: border-color .3s, color .3s;
+      }
 
-/* ── SECTION SHARED ─────────────── */
-section { padding: clamp(4rem, 8vh, 7rem) var(--gap); }
+      .nav-cta:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
 
-.eyebrow {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-family: 'Cormorant', serif;
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.1;
-}
+      /* ── HERO ───────────────────────── */
+      .hero {
+        height: 100svh;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
 
-/* ── ABOUT ──────────────────────── */
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 5rem;
-  align-items: center;
-  border-top: 1px solid var(--border);
-}
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: #1a1612;
+        /* swap for your hero img */
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.05);
+        animation: heroZoom 8s ease forwards;
+      }
 
-.about-img-wrap {
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  background: #1c1c1c;
-  position: relative;
-}
-.about-img-wrap img {
-  height: 100%;
-  object-fit: cover;
-  transition: transform .8s ease;
-  filter: grayscale(20%);
-}
-.about-img-wrap:hover img { transform: scale(1.04); }
-.about-img-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.about-img-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .8rem;
-  color: rgba(240,237,232,.18);
-  letter-spacing: .1em;
-}
+      /* If using a real image: */
+      /* .hero-bg { background-image: url('hero.jpg'); } */
 
-.about-text .section-title { margin-bottom: 1.8rem; }
-.about-text p {
-  font-size: .95rem;
-  line-height: 1.9;
-  color: var(--dim);
-  max-width: 500px;
-  margin-bottom: 1.2rem;
-}
-.about-stats {
-  display: flex;
-  gap: 3rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-}
-.stat-num {
-  font-family: 'Cormorant', serif;
-  font-size: 2.8rem;
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1;
-}
-.stat-label {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: .3rem;
-}
+      .hero-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top,
+            rgba(10, 10, 10, 1) 0%,
+            rgba(10, 10, 10, .5) 40%,
+            transparent 70%);
+      }
 
-/* ── CAROUSEL ───────────────────── */
-.carousel-section {
-  padding-left: 0;
-  padding-right: 0;
-  border-top: 1px solid var(--border);
-}
+      /* placeholder text on hero-bg */
+      .hero-bg-label {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-.carousel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 var(--gap) 2.5rem;
-}
+      .hero-bg-label span {
+        font-family: 'Cormorant', serif;
+        font-style: italic;
+        font-size: 0.85rem;
+        color: rgba(240, 237, 232, .18);
+        letter-spacing: 0.15em;
+      }
 
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.carousel-btn {
-  width: 42px; height: 42px;
-  border: 1px solid var(--border);
-  background: none;
-  color: var(--dim);
-  font-size: 1.1rem;
-  cursor: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color .3s, color .3s;
-}
-.carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 var(--gap) clamp(3rem, 6vh, 5rem);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
 
-.carousel-counter {
-  font-size: 0.7rem;
-  letter-spacing: .15em;
-  color: var(--dim);
-  min-width: 52px;
-  text-align: center;
-}
+      .hero-title {
+        font-family: 'Cormorant', serif;
+        font-weight: 300;
+        font-size: clamp(3.5rem, 8vw, 9rem);
+        line-height: .95;
+        letter-spacing: -0.01em;
+        opacity: 0;
+        animation: fadeUp .9s ease .4s forwards;
+      }
 
-.carousel-track-wrap {
-  overflow: hidden;
-}
-.carousel-track {
-  display: flex;
-  gap: 2px;
-  transition: transform .65s cubic-bezier(.77,0,.175,1);
-  will-change: transform;
-}
+      .hero-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
 
-.carousel-slide {
-  flex: 0 0 auto;
-  width: calc((100vw - 2px) / 1.3); /* ~77vw visible + peek */
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  background: #161616;
-  position: relative;
-}
-.carousel-slide img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(.9);
-  transition: filter .4s, transform .6s ease;
-}
-.carousel-slide:hover img { filter: brightness(1); transform: scale(1.02); }
+      .hero-meta {
+        text-align: right;
+        opacity: 0;
+        animation: fadeUp .9s ease .7s forwards;
+      }
 
-.slide-placeholder {
-  width: 100%; height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.slide-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .85rem;
-  color: rgba(240,237,232,.15);
-  letter-spacing: .1em;
-}
-.sp1 { background: #151210; }
-.sp2 { background: #101510; }
-.sp3 { background: #101215; }
-.sp4 { background: #151510; }
-.sp5 { background: #121015; }
+      .hero-meta p {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        line-height: 2;
+      }
 
-.slide-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1rem 1.4rem;
-  background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 100%);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.slide-title {
-  font-family: 'Cormorant', serif;
-  font-size: 1rem;
-  font-weight: 300;
-}
-.slide-tag {
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
+      .hero-meta .scroll-cue {
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: .7rem;
+        color: var(--dim);
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
 
-/* drag hint */
-.drag-hint {
-  padding: 1.2rem var(--gap) 0;
-  font-size: .65rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(240,237,232,.2);
-}
+      .scroll-bar {
+        width: 32px;
+        height: 1px;
+        background: var(--dim);
+        animation: scrollPulse 2.5s ease-in-out 1.5s infinite;
+      }
 
-/* ── GRID ───────────────────────── */
-.grid-section { border-top: 1px solid var(--border); }
+      /* ── SECTION SHARED ─────────────── */
+      section {
+        padding: clamp(4rem, 8vh, 7rem) var(--gap);
+      }
 
-.grid-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 2.5rem;
-}
-.grid-link {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2px;
-  transition: color .3s, border-color .3s;
-}
-.grid-link:hover { color: var(--accent); border-color: var(--accent); }
+      .eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
-.photo-grid .grid-item {
-  overflow: hidden;
-  position: relative;
-  background: #141414;
-}
-.photo-grid .grid-item:first-child { grid-column: span 2; }
+      .section-title {
+        font-family: 'Cormorant', serif;
+        font-weight: 300;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.1;
+      }
 
-.grid-item-inner {
-  aspect-ratio: 4/3;
-  overflow: hidden;
-}
-.photo-grid .grid-item:first-child .grid-item-inner { aspect-ratio: 16/9; }
+      /* ── ABOUT ──────────────────────── */
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 5rem;
+        align-items: center;
+        border-top: 1px solid var(--border);
+      }
 
-.grid-item-inner img,
-.grid-placeholder {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease, filter .4s;
-  filter: brightness(.85) saturate(.9);
-}
-.grid-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.grid-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .8rem;
-  color: rgba(240,237,232,.15);
-}
-.gp1 { background: #161310; }
-.gp2 { background: #101310; }
-.gp3 { background: #101316; }
-.gp4 { background: #141410; }
+      .about-img-wrap {
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        background: #1c1c1c;
+        position: relative;
+      }
 
-.grid-item:hover img,
-.grid-item:hover .grid-placeholder { transform: scale(1.05); filter: brightness(1) saturate(1); }
+      .about-img-wrap img {
+        height: 100%;
+        object-fit: cover;
+        transition: transform .8s ease;
+        filter: grayscale(20%);
+      }
 
-.grid-item-label {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: .8rem 1rem;
-  background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity .4s;
-  display: flex;
-  justify-content: space-between;
-}
-.grid-item:hover .grid-item-label { opacity: 1; }
-.grid-item-label .g-title {
-  font-family: 'Cormorant', serif;
-  font-size: .9rem;
-  font-weight: 300;
-}
-.grid-item-label .g-cat {
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
+      .about-img-wrap:hover img {
+        transform: scale(1.04);
+      }
 
-/* ── SERVICES ───────────────────── */
-.services { border-top: 1px solid var(--border); }
+      .about-img-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: 3rem;
-  border: 1px solid var(--border);
-}
-.service-card {
-  padding: 2.5rem 2rem;
-  border-right: 1px solid var(--border);
-  transition: background .3s;
-}
-.service-card:last-child { border-right: none; }
-.service-card:hover { background: var(--surface); }
+      .about-img-placeholder span {
+        font-family: 'Cormorant', serif;
+        font-style: italic;
+        font-size: .8rem;
+        color: rgba(240, 237, 232, .18);
+        letter-spacing: .1em;
+      }
 
-.service-num {
-  font-family: 'Cormorant', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: var(--border);
-  margin-bottom: 1.5rem;
-  transition: color .3s;
-}
-.service-card:hover .service-num { color: var(--accent); }
-.service-name {
-  font-family: 'Cormorant', serif;
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-bottom: .8rem;
-}
-.service-desc {
-  font-size: .8rem;
-  line-height: 1.8;
-  color: var(--dim);
-}
+      .about-text .section-title {
+        margin-bottom: 1.8rem;
+      }
 
-/* ── CONTACT ────────────────────── */
-.contact {
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding-top: clamp(5rem, 10vh, 9rem);
-  padding-bottom: clamp(5rem, 10vh, 9rem);
-}
-.contact .section-title {
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  margin: 1rem 0 2.5rem;
-}
-.contact-email {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
-  color: var(--accent);
-  border-bottom: 1px solid rgba(200,169,126,.4);
-  padding-bottom: 3px;
-  transition: border-color .3s, opacity .3s;
-}
-.contact-email:hover { border-color: var(--accent); opacity: .7; }
+      .about-text p {
+        font-size: .95rem;
+        line-height: 1.9;
+        color: var(--dim);
+        max-width: 500px;
+        margin-bottom: 1.2rem;
+      }
 
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-.socials a {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: color .3s;
-}
-.socials a:hover { color: var(--white); }
+      .about-stats {
+        display: flex;
+        gap: 3rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
 
-/* ── FOOTER ─────────────────────── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.8rem var(--gap);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer span {
-  font-size: .65rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: rgba(240,237,232,.2);
-}
+      .stat-num {
+        font-family: 'Cormorant', serif;
+        font-size: 2.8rem;
+        font-weight: 300;
+        color: var(--white);
+        line-height: 1;
+      }
 
-/* ── REVEAL ANIMATION ───────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+      .stat-label {
+        font-size: .65rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-top: .3rem;
+      }
 
-/* ── KEYFRAMES ──────────────────── */
-@keyframes heroZoom {
-  from { transform: scale(1.05); }
-  to   { transform: scale(1); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes scrollPulse {
-  0%, 100% { width: 32px; opacity: .4; }
-  50%       { width: 48px; opacity: .9; }
-}
+      /* ── CAROUSEL ───────────────────── */
+      .carousel-section {
+        padding-left: 0;
+        padding-right: 0;
+        border-top: 1px solid var(--border);
+      }
 
-/* ── RESPONSIVE ─────────────────── */
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .hero-content { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .hero-meta { text-align: left; }
-  .about { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-stats { gap: 2rem; }
-  .carousel-slide { width: 90vw; }
-  .photo-grid { grid-template-columns: 1fr 1fr; }
-  .photo-grid .grid-item:first-child { grid-column: span 2; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service-card { border-right: none; border-bottom: 1px solid var(--border); }
-  footer { flex-direction: column; gap: .8rem; text-align: center; }
-}
+      .carousel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0 var(--gap) 2.5rem;
+      }
 
-@media (max-width: 540px) {
-  .photo-grid { grid-template-columns: 1fr; }
-  .photo-grid .grid-item:first-child { grid-column: span 1; }
-}
+      .carousel-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
 
-</style>
-</head>
-<body>
+      .carousel-btn {
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--border);
+        background: none;
+        color: var(--dim);
+        font-size: 1.1rem;
+        cursor: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color .3s, color .3s;
+      }
 
-  <!-- CURSOR -->
-  <div class="cursor-dot"  id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
+      .carousel-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
 
-  <!-- ── NAV ──────────────────────── -->
-  <nav><a href="#" class="nav-logo">Mila Bentancor <i>PH</i></a>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre MUAAA</a></li>
-      <li><a href="#work">Trabajo</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Reservar Cita</a>
-  </nav>
+      .carousel-counter {
+        font-size: 0.7rem;
+        letter-spacing: .15em;
+        color: var(--dim);
+        min-width: 52px;
+        text-align: center;
+      }
 
-  <!-- ── HERO ──────────────────────── -->
-  <section class="hero">
-    <!--
+      .carousel-track-wrap {
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 2px;
+        transition: transform .65s cubic-bezier(.77, 0, .175, 1);
+        will-change: transform;
+      }
+
+      .carousel-slide {
+        flex: 0 0 auto;
+        width: calc((100vw - 2px) / 1.3);
+        /* ~77vw visible + peek */
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #161616;
+        position: relative;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(.9);
+        transition: filter .4s, transform .6s ease;
+      }
+
+      .carousel-slide:hover img {
+        filter: brightness(1);
+        transform: scale(1.02);
+      }
+
+      .slide-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slide-placeholder span {
+        font-family: 'Cormorant', serif;
+        font-style: italic;
+        font-size: .85rem;
+        color: rgba(240, 237, 232, .15);
+        letter-spacing: .1em;
+      }
+
+      .sp1 {
+        background: #151210;
+      }
+
+      .sp2 {
+        background: #101510;
+      }
+
+      .sp3 {
+        background: #101215;
+      }
+
+      .sp4 {
+        background: #151510;
+      }
+
+      .sp5 {
+        background: #121015;
+      }
+
+      .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 1.4rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, .7) 0%, transparent 100%);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .slide-title {
+        font-family: 'Cormorant', serif;
+        font-size: 1rem;
+        font-weight: 300;
+      }
+
+      .slide-tag {
+        font-size: .6rem;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+
+      /* drag hint */
+      .drag-hint {
+        padding: 1.2rem var(--gap) 0;
+        font-size: .65rem;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: rgba(240, 237, 232, .2);
+      }
+
+      /* ── GRID ───────────────────────── */
+      .grid-section {
+        border-top: 1px solid var(--border);
+      }
+
+      .grid-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 2.5rem;
+      }
+
+      .grid-link {
+        font-size: .65rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        transition: color .3s, border-color .3s;
+      }
+
+      .grid-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+
+      .photo-grid .grid-item {
+        overflow: hidden;
+        position: relative;
+        background: #141414;
+      }
+
+      .photo-grid .grid-item:first-child {
+        grid-column: span 2;
+      }
+
+      .grid-item-inner {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+
+      .photo-grid .grid-item:first-child .grid-item-inner {
+        aspect-ratio: 16/9;
+      }
+
+      .grid-item-inner img,
+      .grid-placeholder {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .6s ease, filter .4s;
+        filter: brightness(.85) saturate(.9);
+      }
+
+      .grid-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .grid-placeholder span {
+        font-family: 'Cormorant', serif;
+        font-style: italic;
+        font-size: .8rem;
+        color: rgba(240, 237, 232, .15);
+      }
+
+      .gp1 {
+        background: #161310;
+      }
+
+      .gp2 {
+        background: #101310;
+      }
+
+      .gp3 {
+        background: #101316;
+      }
+
+      .gp4 {
+        background: #141410;
+      }
+
+      .grid-item:hover img,
+      .grid-item:hover .grid-placeholder {
+        transform: scale(1.05);
+        filter: brightness(1) saturate(1);
+      }
+
+      .grid-item-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: .8rem 1rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, .65) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity .4s;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .grid-item:hover .grid-item-label {
+        opacity: 1;
+      }
+
+      .grid-item-label .g-title {
+        font-family: 'Cormorant', serif;
+        font-size: .9rem;
+        font-weight: 300;
+      }
+
+      .grid-item-label .g-cat {
+        font-size: .6rem;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+
+      /* ── SERVICES ───────────────────── */
+      .services {
+        border-top: 1px solid var(--border);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin-top: 3rem;
+        border: 1px solid var(--border);
+      }
+
+      .service-card {
+        padding: 2.5rem 2rem;
+        border-right: 1px solid var(--border);
+        transition: background .3s;
+      }
+
+      .service-card:last-child {
+        border-right: none;
+      }
+
+      .service-card:hover {
+        background: var(--surface);
+      }
+
+      .service-num {
+        font-family: 'Cormorant', serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--border);
+        margin-bottom: 1.5rem;
+        transition: color .3s;
+      }
+
+      .service-card:hover .service-num {
+        color: var(--accent);
+      }
+
+      .service-name {
+        font-family: 'Cormorant', serif;
+        font-size: 1.3rem;
+        font-weight: 300;
+        margin-bottom: .8rem;
+      }
+
+      .service-desc {
+        font-size: .8rem;
+        line-height: 1.8;
+        color: var(--dim);
+      }
+
+      /* ── CONTACT ────────────────────── */
+      .contact {
+        border-top: 1px solid var(--border);
+        text-align: center;
+        padding-top: clamp(5rem, 10vh, 9rem);
+        padding-bottom: clamp(5rem, 10vh, 9rem);
+      }
+
+      .contact .section-title {
+        font-size: clamp(2.5rem, 6vw, 6rem);
+        margin: 1rem 0 2.5rem;
+      }
+
+      .contact-email {
+        font-family: 'Cormorant', serif;
+        font-style: italic;
+        font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+        color: var(--accent);
+        border-bottom: 1px solid rgba(200, 169, 126, .4);
+        padding-bottom: 3px;
+        transition: border-color .3s, opacity .3s;
+      }
+
+      .contact-email:hover {
+        border-color: var(--accent);
+        opacity: .7;
+      }
+
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .socials a {
+        font-size: .65rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        transition: color .3s;
+      }
+
+      .socials a:hover {
+        color: var(--white);
+      }
+
+      /* ── FOOTER ─────────────────────── */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 1.8rem var(--gap);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer span {
+        font-size: .65rem;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color: rgba(240, 237, 232, .2);
+      }
+
+      /* ── REVEAL ANIMATION ───────────── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity .8s ease, transform .8s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── KEYFRAMES ──────────────────── */
+      @keyframes heroZoom {
+        from {
+          transform: scale(1.05);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scrollPulse {
+
+        0%,
+        100% {
+          width: 32px;
+          opacity: .4;
+        }
+
+        50% {
+          width: 48px;
+          opacity: .9;
+        }
+      }
+
+      /* ── RESPONSIVE ─────────────────── */
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+
+        .hero-meta {
+          text-align: left;
+        }
+
+        .about {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .about-stats {
+          gap: 2rem;
+        }
+
+        .carousel-slide {
+          width: 90vw;
+        }
+
+        .photo-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .photo-grid .grid-item:first-child {
+          grid-column: span 2;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .service-card {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+
+        footer {
+          flex-direction: column;
+          gap: .8rem;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 540px) {
+        .photo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-grid .grid-item:first-child {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- ── NAV ──────────────────────── -->
+    <nav><a href="#" class="nav-logo">Mila Bentancor <i>PH</i></a>
+      <ul class="nav-links">
+        <li><a href="#about">Sobre Mi</a></li>
+        <li><a href="#work">Trabajo</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#contact">Churrasco</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Reservar Cita</a>
+    </nav>
+
+    <!-- ── HERO ──────────────────────── -->
+    <section class="hero">
+      <!--
       Para usar tu propia imagen de fondo:
       <div class="hero-bg" style="background-image: url('tu-hero.jpg')"></div>
     -->
-    <div class="hero-bg">
-      <div alt="Persona a la orilla delcanal de Venecia" class="hero-bg" style="background-image: url('imagenes/_DSC0078.jpg')">
-</div>
-    </div>
-
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Creemos<br>
-        <em>una nueva</em><br>
-        historia.
-      </h1>
-      <div class="hero-meta">
-        <p>Fotografía de retrato</p>
-        <p>Viajes &amp; Urbano</p>
-        <p>Gastronomia &amp; producto</p>
-        <p>Montevideo · disponible remoto</p>
-        <div class="scroll-cue">
-          <br>
-
-          <span class="scroll-bar"></span>
-          Scroll
+      <div class="hero-bg">
+        <div alt="Persona a la orilla delcanal de Venecia" class="hero-bg"
+          style="background-image: url('imagenes/_DSC0078.jpg')">
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── ABOUT ─────────────────────── -->
-  <section class="about" id="about">
-    <div class="about-img-wrap reveal">
-      <!--
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Creemos<br>
+          <em>una nueva</em><br>
+          historia.
+        </h1>
+        <div class="hero-meta">
+          <p>Fotografía de retrato</p>
+          <p>Viajes &amp; Urbano</p>
+          <p>Gastronomia &amp; producto</p>
+          <p>Montevideo · disponible remoto</p>
+          <div class="scroll-cue">
+            <br>
+
+            <span class="scroll-bar"></span>
+            Scroll
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ─────────────────────── -->
+    <section class="about" id="about">
+      <div class="about-img-wrap reveal">
+        <!--
         Reemplaza con tu foto:
         <img src="me.jpg" alt="me"/>
       -->
-      <div class="about-img-placeholder">
-     <img src="124567.jpg" alt="me"/>
-        <span></span>
-      </div>
-    </div>
-
-    <div class="about-text reveal">
-      <p class="eyebrow">Sobre mí</p>
-      <h2 class="section-title">Una mirada<br><em>honesta</em> del mundo.</h2>
-      <p>
-        Soy fotógrafa con base en Montevideo. Me especializo en contar historias con luz, 
-         sin importar si el modelo es una persona , un paisaje, o tu plato favorito. 
-         Cada imagen que creo parte de
-        una conversación: entre la luz, el sujeto y el instante.
-      </p>
-      <p>
-        Trabajo con marcas, agencias y personas que quieren imágenes
-        que digan algo real. Sin filtros innecesarios, sin poses forzadas, solo lo real.
-      </p>
-      <div class="about-stats">
-        <div>
-          <div class="stat-num">7+</div>
-          <div class="stat-label">Años activa</div>
-        </div>
-        <div>
-          <div class="stat-num">200+</div>
-          <div class="stat-label">Proyectos</div>
-        </div>
-        <div>
-          <div class="stat-num">3</div>
-          <div class="stat-label">Países</div>
+        <div class="about-img-placeholder">
+          <img src="Imagenes/_DSC0675.jpg" alt="me" />
+          <span></span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── CAROUSEL ──────────────────── -->
-  <section class="carousel-section" id="work">
-    <div class="carousel-header reveal">
-      <div>
-        <p class="eyebrow">Trabajo selecto</p>
-        <h2 class="section-title">Últimas series</h2>
+      <div class="about-text reveal">
+        <p class="eyebrow">Sobre mí</p>
+        <h2 class="section-title">Una mirada<br><em>honesta</em> del mundo.</h2>
+        <p>
+          Soy fotógrafa con base en Montevideo. Me especializo en contar historias con luz,
+          sin importar si el modelo es una persona , un paisaje, o tu plato favorito.
+          Cada imagen que creo parte de
+          una conversación: entre la luz, el sujeto y el instante.
+        </p>
+        <p>
+          Trabajo con marcas, agencias y personas que quieren imágenes
+          que digan algo real. Sin filtros innecesarios, sin poses forzadas, solo lo real.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Años activa</div>
+          </div>
+          <div>
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Proyectos</div>
+          </div>
+          <div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Países</div>
+          </div>
+        </div>
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="btn-prev" aria-label="Anterior">←</button>
-        <span class="carousel-counter" id="carousel-counter">01 / 05</span>
-        <button class="carousel-btn" id="btn-next" aria-label="Siguiente">→</button>
+    </section>
+
+    <!-- ── CAROUSEL ──────────────────── -->
+    <section class="carousel-section" id="work">
+      <div class="carousel-header reveal">
+        <div>
+          <p class="eyebrow">Trabajo selecto</p>
+          <h2 class="section-title">Últimas series</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="btn-prev" aria-label="Anterior">←</button>
+          <span class="carousel-counter" id="carousel-counter">01 / 05</span>
+          <button class="carousel-btn" id="btn-next" aria-label="Siguiente">→</button>
+        </div>
       </div>
-    </div>
 
-    <div class="carousel-track-wrap">
-      <div class="carousel-track">
+      <div class="carousel-track-wrap">
+        <div class="carousel-track">
 
-        <!-- Slide 1 -->
-        <div class="carousel-slide">
-          <!--
+          <!-- Slide 1 -->
+          <div class="carousel-slide">
+            <!--
             Para usar imagen real:
             <img src="serie1.jpg" alt="Serie 1" />
           -->
-          <div class="slide-placeholder sp1">
-            <span>Serie 01 — _DSC0803.jpg</span>
+            <div class="slide-placeholder sp1">
+              <img src="Imagenes/_DSC0803.jpg" alt="Serie 1" />
+              <span>Serie 01 — _DSC0803.jpg</span>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-title">Nombre de la serie</span>
+              <span class="slide-tag">Retrato · 2024</span>
+            </div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Retrato · 2024</span>
+
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder sp2">
+              <img src="Imagenes/_DSC0675.jpg" alt="Serie 2" />
+              <span>Serie 02 — _DSC0675.jpg</span>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-title">Nombre de la serie</span>
+              <span class="slide-tag">Editorial · 2024</span>
+            </div>
           </div>
-        </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp2">
-            <span>Serie 02 — tu imagen</span>
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder sp3">
+              <span>Serie 03 — tu imagen</span>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-title">Nombre de la serie</span>
+              <span class="slide-tag">Moda · 2025</span>
+            </div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Editorial · 2024</span>
+
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder sp4">
+              <span>Serie 04 — tu imagen</span>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-title">Nombre de la serie</span>
+              <span class="slide-tag">Documental · 2025</span>
+            </div>
           </div>
-        </div>
 
-        <!-- Slide 3 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp3">
-            <span>Serie 03 — tu imagen</span>
+          <!-- Slide 5 -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder sp5">
+              <span>Serie 05 — tu imagen</span>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-title">Nombre de la serie</span>
+              <span class="slide-tag">Retrato · 2025</span>
+            </div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Moda · 2025</span>
-          </div>
-        </div>
 
-        <!-- Slide 4 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp4">
-            <span>Serie 04 — tu imagen</span>
-          </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Documental · 2025</span>
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp5">
-            <span>Serie 05 — tu imagen</span>
-          </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Retrato · 2025</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <p class="drag-hint">← Arrastra o desliza →</p>
-  </section>
-
-  <!-- ── PHOTO GRID ─────────────────── -->
-  <section class="grid-section" style="padding-top: clamp(4rem,8vh,7rem); padding-bottom: clamp(4rem,8vh,7rem);">
-    <div class="grid-header reveal">
-      <div>
-        <p class="eyebrow">Galería</p>
-        <h2 class="section-title">Favoritas</h2>
-      </div>
-      <a href="#contact" class="grid-link">Ver portafolio completo</a>
-    </div>
-
-    <div class="photo-grid reveal">
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <!-- <img src="foto1.jpg" alt="Foto 1" /> -->
-          <div class="grid-placeholder gp1"><span>Foto 01</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Retrato</span>
         </div>
       </div>
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp2"><span>Foto 02</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Viaje</span>
-        </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp3"><span>Foto 03</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Editorial</span>
-        </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp4"><span>Foto 04</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Documental</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── SERVICES ──────────────────── -->
-  <section class="services" id="services">
-    <div class="reveal">
-      <p class="eyebrow">Servicios</p>
-      <h2 class="section-title">Qué ofrezco</h2>
-    </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-name">Retratos</div>
-        <div class="service-desc">
-          Sesiones individuales y grupales que capturan autenticidad.
-          Estudio o locación, luz natural o artificial.
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-name">Editorial &amp; Producto</div>
-        <div class="service-desc">
-          Dirección de arte visual para marcas y publicaciones.
-          Lookbooks, campañas y contenido para redes.
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-name">Documental</div>
-        <div class="service-desc">
-          Cobertura de eventos, procesos creativos e historias
-          que merecen ser contadas con honestidad.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ────────────────────── -->
-  <section class="contact" id="contact">
-    <div class="reveal">
-      <p class="eyebrow">Contacto</p>
-      <h2 class="section-title">Trabajemos<br><em>juntos</em></h2>
-      <a href="mailto:tu@email.com" class="contact-email">tu@email.com</a>
-      <div class="socials">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ─────────────────────── -->
-  <footer>
-    <span>Mila Bentancor — Fotografía</span>
-    <span>© 2026 — Todos los derechos reservados</span>
-    <span>Montevideo, Uruguay</span>
-  </footer>
-
-  <script>
-/* ================================
-   FOTOGRAFÍA — main.js
-   ================================ */
-
-// ── CURSOR ───────────────────────
-const dot  = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
-
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-});
-
-// smooth ring follow
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
-
-// hover expand
-document.querySelectorAll('a, button, .grid-item, .carousel-slide').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
-
-
-// ── SCROLL REVEAL ────────────────
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-
-// ── CAROUSEL ─────────────────────
-const track    = document.querySelector('.carousel-track');
-const slides   = [...document.querySelectorAll('.carousel-slide')];
-const btnPrev  = document.getElementById('btn-prev');
-const btnNext  = document.getElementById('btn-next');
-const counter  = document.getElementById('carousel-counter');
-
-let current = 0;
-const total = slides.length;
-
-function getSlideWidth() {
-  if (!slides[0]) return 0;
-  const style = getComputedStyle(slides[0]);
-  return slides[0].offsetWidth + parseInt(style.marginRight || 0) + 2; // +gap (2px)
-}
-
-function goTo(index) {
-  current = Math.max(0, Math.min(index, total - 1));
-  track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
-  counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  btnPrev.disabled = current === 0;
-  btnNext.disabled = current === total - 1;
-  btnPrev.style.opacity = current === 0 ? '0.3' : '1';
-  btnNext.style.opacity = current === total - 1 ? '0.3' : '1';
-}
-
-btnPrev.addEventListener('click', () => goTo(current - 1));
-btnNext.addEventListener('click', () => goTo(current + 1));
-
-// touch / drag swipe
-let startX = 0, isDragging = false;
-
-track.addEventListener('pointerdown', e => {
-  startX = e.clientX;
-  isDragging = true;
-  track.style.transition = 'none';
-  track.setPointerCapture(e.pointerId);
-});
-track.addEventListener('pointermove', e => {
-  if (!isDragging) return;
-  const dx = e.clientX - startX;
-  track.style.transform = `translateX(${-current * getSlideWidth() + dx}px)`;
-});
-track.addEventListener('pointerup', e => {
-  if (!isDragging) return;
-  isDragging = false;
-  track.style.transition = '';
-  const dx = e.clientX - startX;
-  if (dx < -60) goTo(current + 1);
-  else if (dx > 60) goTo(current - 1);
-  else goTo(current);
-});
-
-// keyboard nav
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') goTo(current + 1);
-  if (e.key === 'ArrowLeft')  goTo(current - 1);
-});
-
-// init
-goTo(0);
-
-// recalc on resize
-window.addEventListener('resize', () => goTo(current));
-
-</script>
-</body>
-=======
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portafolio — Fotografía</title>
-  <style>
-/* ================================
-   FOTOGRAFÍA — style.css
-   Dark minimal, image-first
-   ================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400&display=swap');
-
-/* ── TOKENS ─────────────────────── */
-:root {
-  --bg:       #0a0a0a;
-  --surface:  #111111;
-  --border:   rgba(255,255,255,0.07);
-  --white:    #f0ede8;
-  --dim:      rgba(240,237,232,0.4);
-  --accent:   #c8a97e;
-  --gap:      clamp(1.5rem, 3vw, 3rem);
-}
-
-/* ── RESET ──────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { display: block; width: 100%; }
-a   { color: inherit; text-decoration: none; }
-
-/* ── CURSOR ─────────────────────── */
-body { cursor: none; }
-
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  transition: opacity .3s;
-}
-.cursor-dot  { width: 5px; height: 5px; background: var(--accent); }
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(200,169,126,.5);
-  transition: width .35s ease, height .35s ease, border-color .35s ease;
-}
-.cursor-ring.hover {
-  width: 60px; height: 60px;
-  border-color: var(--accent);
-}
-
-/* ── NAV ────────────────────────── */
-nav {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 200;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.8rem var(--gap);
-  background: linear-gradient(to bottom, rgba(10,10,10,.95) 0%, transparent 100%);
-}
-
-.nav-logo {
-  font-family: 'Cormorant', serif;
-  font-size: 1.15rem;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-}
-.nav-links a {
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: color .3s;
-}
-.nav-links a:hover { color: var(--white); }
-
-.nav-cta {
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: .55rem 1.4rem;
-  border: 1px solid var(--border);
-  color: var(--dim);
-  transition: border-color .3s, color .3s;
-}
-.nav-cta:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ── HERO ───────────────────────── */
-.hero {
-  height: 100svh;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: #1a1612;   /* swap for your hero img */
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.05);
-  animation: heroZoom 8s ease forwards;
-}
-/* If using a real image: */
-/* .hero-bg { background-image: url('hero.jpg'); } */
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10,10,10,1) 0%,
-    rgba(10,10,10,.5) 40%,
-    transparent 70%
-  );
-}
-
-/* placeholder text on hero-bg */
-.hero-bg-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-bg-label span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  color: rgba(240,237,232,.18);
-  letter-spacing: 0.15em;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 var(--gap) clamp(3rem, 6vh, 5rem);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.hero-title {
-  font-family: 'Cormorant', serif;
-  font-weight: 300;
-  font-size: clamp(3.5rem, 8vw, 9rem);
-  line-height: .95;
-  letter-spacing: -0.01em;
-  opacity: 0;
-  animation: fadeUp .9s ease .4s forwards;
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-meta {
-  text-align: right;
-  opacity: 0;
-  animation: fadeUp .9s ease .7s forwards;
-}
-.hero-meta p {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  line-height: 2;
-}
-.hero-meta .scroll-cue {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: .7rem;
-  color: var(--dim);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.scroll-bar {
-  width: 32px;
-  height: 1px;
-  background: var(--dim);
-  animation: scrollPulse 2.5s ease-in-out 1.5s infinite;
-}
-
-/* ── SECTION SHARED ─────────────── */
-section { padding: clamp(4rem, 8vh, 7rem) var(--gap); }
-
-.eyebrow {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-family: 'Cormorant', serif;
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.1;
-}
-
-/* ── ABOUT ──────────────────────── */
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 5rem;
-  align-items: center;
-  border-top: 1px solid var(--border);
-}
-
-.about-img-wrap {
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  background: #1c1c1c;
-  position: relative;
-}
-.about-img-wrap img {
-  height: 100%;
-  object-fit: cover;
-  transition: transform .8s ease;
-  filter: grayscale(20%);
-}
-.about-img-wrap:hover img { transform: scale(1.04); }
-.about-img-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.about-img-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .8rem;
-  color: rgba(240,237,232,.18);
-  letter-spacing: .1em;
-}
-
-.about-text .section-title { margin-bottom: 1.8rem; }
-.about-text p {
-  font-size: .95rem;
-  line-height: 1.9;
-  color: var(--dim);
-  max-width: 500px;
-  margin-bottom: 1.2rem;
-}
-.about-stats {
-  display: flex;
-  gap: 3rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-}
-.stat-num {
-  font-family: 'Cormorant', serif;
-  font-size: 2.8rem;
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1;
-}
-.stat-label {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: .3rem;
-}
-
-/* ── CAROUSEL ───────────────────── */
-.carousel-section {
-  padding-left: 0;
-  padding-right: 0;
-  border-top: 1px solid var(--border);
-}
-
-.carousel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 var(--gap) 2.5rem;
-}
-
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.carousel-btn {
-  width: 42px; height: 42px;
-  border: 1px solid var(--border);
-  background: none;
-  color: var(--dim);
-  font-size: 1.1rem;
-  cursor: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color .3s, color .3s;
-}
-.carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-.carousel-counter {
-  font-size: 0.7rem;
-  letter-spacing: .15em;
-  color: var(--dim);
-  min-width: 52px;
-  text-align: center;
-}
-
-.carousel-track-wrap {
-  overflow: hidden;
-}
-.carousel-track {
-  display: flex;
-  gap: 2px;
-  transition: transform .65s cubic-bezier(.77,0,.175,1);
-  will-change: transform;
-}
-
-.carousel-slide {
-  flex: 0 0 auto;
-  width: calc((100vw - 2px) / 1.3); /* ~77vw visible + peek */
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  background: #161616;
-  position: relative;
-}
-.carousel-slide img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(.9);
-  transition: filter .4s, transform .6s ease;
-}
-.carousel-slide:hover img { filter: brightness(1); transform: scale(1.02); }
-
-.slide-placeholder {
-  width: 100%; height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.slide-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .85rem;
-  color: rgba(240,237,232,.15);
-  letter-spacing: .1em;
-}
-.sp1 { background: #151210; }
-.sp2 { background: #101510; }
-.sp3 { background: #101215; }
-.sp4 { background: #151510; }
-.sp5 { background: #121015; }
-
-.slide-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1rem 1.4rem;
-  background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 100%);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.slide-title {
-  font-family: 'Cormorant', serif;
-  font-size: 1rem;
-  font-weight: 300;
-}
-.slide-tag {
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-/* drag hint */
-.drag-hint {
-  padding: 1.2rem var(--gap) 0;
-  font-size: .65rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(240,237,232,.2);
-}
-
-/* ── GRID ───────────────────────── */
-.grid-section { border-top: 1px solid var(--border); }
-
-.grid-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 2.5rem;
-}
-.grid-link {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2px;
-  transition: color .3s, border-color .3s;
-}
-.grid-link:hover { color: var(--accent); border-color: var(--accent); }
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
-.photo-grid .grid-item {
-  overflow: hidden;
-  position: relative;
-  background: #141414;
-}
-.photo-grid .grid-item:first-child { grid-column: span 2; }
-
-.grid-item-inner {
-  aspect-ratio: 4/3;
-  overflow: hidden;
-}
-.photo-grid .grid-item:first-child .grid-item-inner { aspect-ratio: 16/9; }
-
-.grid-item-inner img,
-.grid-placeholder {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease, filter .4s;
-  filter: brightness(.85) saturate(.9);
-}
-.grid-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.grid-placeholder span {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: .8rem;
-  color: rgba(240,237,232,.15);
-}
-.gp1 { background: #161310; }
-.gp2 { background: #101310; }
-.gp3 { background: #101316; }
-.gp4 { background: #141410; }
-
-.grid-item:hover img,
-.grid-item:hover .grid-placeholder { transform: scale(1.05); filter: brightness(1) saturate(1); }
-
-.grid-item-label {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: .8rem 1rem;
-  background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity .4s;
-  display: flex;
-  justify-content: space-between;
-}
-.grid-item:hover .grid-item-label { opacity: 1; }
-.grid-item-label .g-title {
-  font-family: 'Cormorant', serif;
-  font-size: .9rem;
-  font-weight: 300;
-}
-.grid-item-label .g-cat {
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-/* ── SERVICES ───────────────────── */
-.services { border-top: 1px solid var(--border); }
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: 3rem;
-  border: 1px solid var(--border);
-}
-.service-card {
-  padding: 2.5rem 2rem;
-  border-right: 1px solid var(--border);
-  transition: background .3s;
-}
-.service-card:last-child { border-right: none; }
-.service-card:hover { background: var(--surface); }
-
-.service-num {
-  font-family: 'Cormorant', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: var(--border);
-  margin-bottom: 1.5rem;
-  transition: color .3s;
-}
-.service-card:hover .service-num { color: var(--accent); }
-.service-name {
-  font-family: 'Cormorant', serif;
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-bottom: .8rem;
-}
-.service-desc {
-  font-size: .8rem;
-  line-height: 1.8;
-  color: var(--dim);
-}
-
-/* ── CONTACT ────────────────────── */
-.contact {
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding-top: clamp(5rem, 10vh, 9rem);
-  padding-bottom: clamp(5rem, 10vh, 9rem);
-}
-.contact .section-title {
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  margin: 1rem 0 2.5rem;
-}
-.contact-email {
-  font-family: 'Cormorant', serif;
-  font-style: italic;
-  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
-  color: var(--accent);
-  border-bottom: 1px solid rgba(200,169,126,.4);
-  padding-bottom: 3px;
-  transition: border-color .3s, opacity .3s;
-}
-.contact-email:hover { border-color: var(--accent); opacity: .7; }
-
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-.socials a {
-  font-size: .65rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: color .3s;
-}
-.socials a:hover { color: var(--white); }
-
-/* ── FOOTER ─────────────────────── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.8rem var(--gap);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer span {
-  font-size: .65rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: rgba(240,237,232,.2);
-}
-
-/* ── REVEAL ANIMATION ───────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ── KEYFRAMES ──────────────────── */
-@keyframes heroZoom {
-  from { transform: scale(1.05); }
-  to   { transform: scale(1); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes scrollPulse {
-  0%, 100% { width: 32px; opacity: .4; }
-  50%       { width: 48px; opacity: .9; }
-}
-
-/* ── RESPONSIVE ─────────────────── */
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .hero-content { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .hero-meta { text-align: left; }
-  .about { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-stats { gap: 2rem; }
-  .carousel-slide { width: 90vw; }
-  .photo-grid { grid-template-columns: 1fr 1fr; }
-  .photo-grid .grid-item:first-child { grid-column: span 2; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service-card { border-right: none; border-bottom: 1px solid var(--border); }
-  footer { flex-direction: column; gap: .8rem; text-align: center; }
-}
-
-@media (max-width: 540px) {
-  .photo-grid { grid-template-columns: 1fr; }
-  .photo-grid .grid-item:first-child { grid-column: span 1; }
-}
-
-</style>
-</head>
-<body>
-
-  <!-- CURSOR -->
-  <div class="cursor-dot"  id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
-
-  <!-- ── NAV ──────────────────────── -->
-  <nav><a href="#" class="nav-logo">Mila Bentancor <i>PH</i></a>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre KNDSNV;</a></li>
-      <li><a href="#work">Trabajo</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Reservar Cita</a>
-  </nav>
-
-  <!-- ── HERO ──────────────────────── -->
-  <section class="hero">
-    <!--
-      Para usar tu propia imagen de fondo:
-      <div class="hero-bg" style="background-image: url('tu-hero.jpg')"></div>
-    -->
-    <div class="hero-bg">
-      <div alt="Persona a la orilla delcanal de Venecia" class="hero-bg" style="background-image: url('imagenes/_DSC0078.jpg')">
-</div>
-    </div>
-
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Creemos<br>
-        <em>una nueva</em><br>
-        historia.
-      </h1>
-      <div class="hero-meta">
-        <p>Fotografía de Retrato</p>
-        <p>Viajes &amp; Urbano</p>
-        <p>Gastronomia &amp; producto</p>
-        <p>Montevideo · disponible remoto</p>
-        <div class="scroll-cue">
-          <br>
-
-          <span class="scroll-bar"></span>
-          Scroll
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ABOUT ─────────────────────── -->
-  <section class="about" id="about">
-    <div class="about-img-wrap reveal">
-      <!--
-        Reemplaza con tu foto:
-        <img src="me.jpg" alt="me"/>
-      -->
-      <div class="about-img-placeholder">
-     <img src="124567.jpg" alt="me"/>
-        <span></span>
-      </div>
-    </div>
-
-    <div class="about-text reveal">
-      <p class="eyebrow">Sobre mí</p>
-      <h2 class="section-title">Una mirada<br><em>honesta</em> del mundo.</h2>
-      <p>
-       fotógrafa con base en Montevideo. Me especializo en contar historias con luz, 
-         sin importar si el modelo es una persona , un paisaje, o tu plato favorito. 
-         Cada imagen que creo parte de
-        una conversación: entre la luz, el sujeto y el instante.
-      </p>
-      <p>
-        Trabajo con marcas, agencias y personas que quieren imágenes
-        que digan algo real. Sin filtros innecesarios, sin poses forzadas, solo lo real.
-      </p>
-      <div class="about-stats">
+      <p class="drag-hint">← Arrastra o desliza →</p>
+    </section>
+
+    <!-- ── PHOTO GRID ─────────────────── -->
+    <section class="grid-section" style="padding-top: clamp(4rem,8vh,7rem); padding-bottom: clamp(4rem,8vh,7rem);">
+      <div class="grid-header reveal">
         <div>
-          <div class="stat-num">7+</div>
-          <div class="stat-label">Años activa</div>
+          <p class="eyebrow">Galería</p>
+          <h2 class="section-title">Favoritas</h2>
         </div>
-        <div>
-          <div class="stat-num">200+</div>
-          <div class="stat-label">Proyectos</div>
-        </div>
-        <div>
-          <div class="stat-num">3</div>
-          <div class="stat-label">Países</div>
-        </div>
+        <a href="#contact" class="grid-link">Ver portafolio completo</a>
       </div>
-    </div>
-  </section>
 
-  <!-- ── CAROUSEL ──────────────────── -->
-  <section class="carousel-section" id="work">
-    <div class="carousel-header reveal">
-      <div>
-        <p class="eyebrow">Trabajo selecto</p>
-        <h2 class="section-title">Últimas series</h2>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="btn-prev" aria-label="Anterior">←</button>
-        <span class="carousel-counter" id="carousel-counter">01 / 05</span>
-        <button class="carousel-btn" id="btn-next" aria-label="Siguiente">→</button>
-      </div>
-    </div>
+      <div class="photo-grid reveal">
 
-    <div class="carousel-track-wrap">
-      <div class="carousel-track">
-
-        <!-- Slide 1 -->
-        <div class="carousel-slide">
-          <!--
-            Para usar imagen real:
-            <img src="serie1.jpg" alt="Serie 1" />
-          -->
-          <div class="slide-placeholder sp1">
-            <span>Serie 01 — _DSC0803.jpg</span>
+        <div class="grid-item">
+          <div class="grid-item-inner">
+            <img src="_DSCO803.jpg" alt="Foto 1" />
+            <div class="grid-placeholder gp1"><span>Foto 01</span></div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Retrato · 2024</span>
+          <div class="grid-item-label">
+            <span class="g-title">Nombre de la foto</span>
+            <span class="g-cat">Retrato</span>
           </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp2">
-            <span>Serie 02 — tu imagen</span>
+        <div class="grid-item">
+          <div class="grid-item-inner">
+            <div class="grid-placeholder gp2"><span>Foto 02</span></div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Editorial · 2024</span>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp3">
-            <span>Serie 03 — tu imagen</span>
-          </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Moda · 2025</span>
+          <div class="grid-item-label">
+            <span class="g-title">Nombre de la foto</span>
+            <span class="g-cat">Viaje</span>
           </div>
         </div>
 
-        <!-- Slide 4 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp4">
-            <span>Serie 04 — tu imagen</span>
+        <div class="grid-item">
+          <div class="grid-item-inner">
+            <div class="grid-placeholder gp3"><span>Foto 03</span></div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Documental · 2025</span>
+          <div class="grid-item-label">
+            <span class="g-title">Nombre de la foto</span>
+            <span class="g-cat">Editorial</span>
           </div>
         </div>
 
-        <!-- Slide 5 -->
-        <div class="carousel-slide">
-          <div class="slide-placeholder sp5">
-            <span>Serie 05 — tu imagen</span>
+        <div class="grid-item">
+          <div class="grid-item-inner">
+            <div class="grid-placeholder gp4"><span>Foto 04</span></div>
           </div>
-          <div class="slide-caption">
-            <span class="slide-title">Nombre de la serie</span>
-            <span class="slide-tag">Retrato · 2025</span>
+          <div class="grid-item-label">
+            <span class="g-title">Nombre de la foto</span>
+            <span class="g-cat">Documental</span>
           </div>
         </div>
 
       </div>
-    </div>
-    <p class="drag-hint">← Arrastra o desliza →</p>
-  </section>
+    </section>
 
-  <!-- ── PHOTO GRID ─────────────────── -->
-  <section class="grid-section" style="padding-top: clamp(4rem,8vh,7rem); padding-bottom: clamp(4rem,8vh,7rem);">
-    <div class="grid-header reveal">
-      <div>
-        <p class="eyebrow">Galería</p>
-        <h2 class="section-title">Favoritas</h2>
+    <!-- ── SERVICES ──────────────────── -->
+    <section class="services" id="services">
+      <div class="reveal">
+        <p class="eyebrow">Servicios</p>
+        <h2 class="section-title">Qué ofrezco</h2>
       </div>
-      <a href="#contact" class="grid-link">Ver portafolio completo</a>
-    </div>
-
-    <div class="photo-grid reveal">
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <!-- <img src="foto1.jpg" alt="Foto 1" /> -->
-          <div class="grid-placeholder gp1"><span>Foto 01</span></div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-name">Retratos</div>
+          <div class="service-desc">
+            Sesiones individuales y grupales que capturan autenticidad.
+            Estudio o locación, luz natural o artificial.
+          </div>
         </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Retrato</span>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-name">Editorial &amp; Producto</div>
+          <div class="service-desc">
+            Dirección de arte visual para marcas y publicaciones.
+            Lookbooks, campañas y contenido para redes.
+          </div>
         </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp2"><span>Foto 02</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Viaje</span>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-name">Documental</div>
+          <div class="service-desc">
+            Cobertura de eventos, procesos creativos e historias
+            que merecen ser contadas con honestidad.
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp3"><span>Foto 03</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Editorial</span>
-        </div>
-      </div>
+    <!-- ── CONTACT ────────────────────── -->
+    <section class="contact" id="contact">
+      <div class="reveal">
+        <p class="eyebrow">Contacto</p>
+        <h2 class="section-title">Trabajemos<br><em>juntos</em></h2>
+        <a href="mailto:tu@email.com" class="contact-email">tu@email.com</a>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
 
-      <div class="grid-item">
-        <div class="grid-item-inner">
-          <div class="grid-placeholder gp4"><span>Foto 04</span></div>
-        </div>
-        <div class="grid-item-label">
-          <span class="g-title">Nombre de la foto</span>
-          <span class="g-cat">Documental</span>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ── FOOTER ─────────────────────── -->
+    <footer>
+      <span>Mila Bentancor — Fotografía</span>
+      <span>© 2026 — Todos los derechos reservados</span>
+      <span>Montevideo, Uruguay</span>
+    </footer>
 
-  <!-- ── SERVICES ──────────────────── -->
-  <section class="services" id="services">
-    <div class="reveal">
-      <p class="eyebrow">Servicios</p>
-      <h2 class="section-title">Qué ofrezco</h2>
-    </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-name">Retratos</div>
-        <div class="service-desc">
-          Sesiones individuales y grupales que capturan autenticidad.
-          Estudio o locación, luz natural o artificial.
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-name">Editorial &amp; Producto</div>
-        <div class="service-desc">
-          Dirección de arte visual para marcas y publicaciones.
-          Lookbooks, campañas y contenido para redes.
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-name">Documental</div>
-        <div class="service-desc">
-          Cobertura de eventos, procesos creativos e historias
-          que merecen ser contadas con honestidad.
-        </div>
-      </div>
-    </div>
-  </section>
+    <script>
+      /* ================================
+         FOTOGRAFÍA — main.js
+         ================================ */
 
-  <!-- ── CONTACT ────────────────────── -->
-  <section class="contact" id="contact">
-    <div class="reveal">
-      <p class="eyebrow">Contacto</p>
-      <h2 class="section-title">Trabajemos<br><em>juntos</em></h2>
-      <a href="mailto:tu@email.com" class="contact-email">tu@email.com</a>
-      <div class="socials">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        
-      </div>
-    </div>
-  </section>
+      // ── CURSOR ───────────────────────
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
 
-  <!-- ── FOOTER ─────────────────────── -->
-  <footer>
-    <span>Mila Bentancor — Fotografía</span>
-    <span>© 2026 — Todos los derechos reservados</span>
-    <span>Montevideo, Uruguay</span>
-  </footer>
+      let mouseX = 0, mouseY = 0;
+      let ringX = 0, ringY = 0;
 
-  <script>
-/* ================================
-   FOTOGRAFÍA — main.js
-   ================================ */
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+      });
 
-// ── CURSOR ───────────────────────
-const dot  = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
+      // smooth ring follow
+      (function animateRing() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      })();
 
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
-
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-});
-
-// smooth ring follow
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
-
-// hover expand
-document.querySelectorAll('a, button, .grid-item, .carousel-slide').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
+      // hover expand
+      document.querySelectorAll('a, button, .grid-item, .carousel-slide').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+      });
 
 
-// ── SCROLL REVEAL ────────────────
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
+      // ── SCROLL REVEAL ────────────────
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-// ── CAROUSEL ─────────────────────
-const track    = document.querySelector('.carousel-track');
-const slides   = [...document.querySelectorAll('.carousel-slide')];
-const btnPrev  = document.getElementById('btn-prev');
-const btnNext  = document.getElementById('btn-next');
-const counter  = document.getElementById('carousel-counter');
+      // ── CAROUSEL ─────────────────────
+      const track = document.querySelector('.carousel-track');
+      const slides = [...document.querySelectorAll('.carousel-slide')];
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const counter = document.getElementById('carousel-counter');
 
-let current = 0;
-const total = slides.length;
+      let current = 0;
+      const total = slides.length;
 
-function getSlideWidth() {
-  if (!slides[0]) return 0;
-  const style = getComputedStyle(slides[0]);
-  return slides[0].offsetWidth + parseInt(style.marginRight || 0) + 2; // +gap (2px)
-}
+      function getSlideWidth() {
+        if (!slides[0]) return 0;
+        const style = getComputedStyle(slides[0]);
+        return slides[0].offsetWidth + parseInt(style.marginRight || 0) + 2; // +gap (2px)
+      }
 
-function goTo(index) {
-  current = Math.max(0, Math.min(index, total - 1));
-  track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
-  counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  btnPrev.disabled = current === 0;
-  btnNext.disabled = current === total - 1;
-  btnPrev.style.opacity = current === 0 ? '0.3' : '1';
-  btnNext.style.opacity = current === total - 1 ? '0.3' : '1';
-}
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, total - 1));
+        track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+        counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+        btnPrev.disabled = current === 0;
+        btnNext.disabled = current === total - 1;
+        btnPrev.style.opacity = current === 0 ? '0.3' : '1';
+        btnNext.style.opacity = current === total - 1 ? '0.3' : '1';
+      }
 
-btnPrev.addEventListener('click', () => goTo(current - 1));
-btnNext.addEventListener('click', () => goTo(current + 1));
+      btnPrev.addEventListener('click', () => goTo(current - 1));
+      btnNext.addEventListener('click', () => goTo(current + 1));
 
-// touch / drag swipe
-let startX = 0, isDragging = false;
+      // touch / drag swipe
+      let startX = 0, isDragging = false;
 
-track.addEventListener('pointerdown', e => {
-  startX = e.clientX;
-  isDragging = true;
-  track.style.transition = 'none';
-  track.setPointerCapture(e.pointerId);
-});
-track.addEventListener('pointermove', e => {
-  if (!isDragging) return;
-  const dx = e.clientX - startX;
-  track.style.transform = `translateX(${-current * getSlideWidth() + dx}px)`;
-});
-track.addEventListener('pointerup', e => {
-  if (!isDragging) return;
-  isDragging = false;
-  track.style.transition = '';
-  const dx = e.clientX - startX;
-  if (dx < -60) goTo(current + 1);
-  else if (dx > 60) goTo(current - 1);
-  else goTo(current);
-});
+      track.addEventListener('pointerdown', e => {
+        startX = e.clientX;
+        isDragging = true;
+        track.style.transition = 'none';
+        track.setPointerCapture(e.pointerId);
+      });
+      track.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        track.style.transform = `translateX(${-current * getSlideWidth() + dx}px)`;
+      });
+      track.addEventListener('pointerup', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.transition = '';
+        const dx = e.clientX - startX;
+        if (dx < -60) goTo(current + 1);
+        else if (dx > 60) goTo(current - 1);
+        else goTo(current);
+      });
 
-// keyboard nav
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') goTo(current + 1);
-  if (e.key === 'ArrowLeft')  goTo(current - 1);
-});
+      // keyboard nav
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+      });
 
-// init
-goTo(0);
+      // init
+      goTo(0);
 
-// recalc on resize
-window.addEventListener('resize', () => goTo(current));
+      // recalc on resize
+      window.addEventListener('resize', () => goTo(current));
 
-</script>
-</body>
->>>>>>> Stashed changes
-</html>
+    </script>
+  </body>
+ 
